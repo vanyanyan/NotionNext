@@ -44,7 +44,7 @@ module.exports = {
   // 标签相关
   TAG_SORT_BY_COUNT: true, // 标签是否按照文章数量倒序排列，文章多的标签排在前。
   IS_TAG_COLOR_DISTINGUISHED:
-    process.env.NEXT_PUBLIC_IS_TAG_COLOR_DISTINGUISHED === 'true' || true // 对于名称相同的tag是否区分tag的颜色
+    process.env.NEXT_PUBLIC_IS_TAG_COLOR_DISTINGUISHED === 'true' || true, // 对于名称相同的tag是否区分tag的颜色
 // 在分类中使用中文时，将其映射为英文URL
   POST_URL_PREFIX_MAPPING_CATEGORY: {
     "VPS评测": "performance",
