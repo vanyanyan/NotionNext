@@ -1,0 +1,80 @@
+{ 
+  "log": {
+    "access": "none",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "warning"
+  },
+  
+  "routing": {
+    "domainStrategy": "IPIfNonMatch", 
+    "rules": [
+      {
+        "type": "field",
+        "ip": ["geoip:private"], 
+        "outboundTag": "block" 
+      },
+      {
+        "type": "field",
+        "protocol": [
+          "bittorrent"
+        ], 
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "domain": ["geosite:category-ads-all"], 
+        "outboundTag": "block"
+      }
+    ]
+  },
+  
+  "inbounds": [
+    {
+      "listen": "::",
+      "port": 443, 
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "liy@hkg",
+            "flow": "xtls-rprx-vision", 
+            "id": "27028614-ec86-4a41-b01e-42ff8e720f25"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "dest": "www.yahoo.com:443",
+          "xver": 0,
+          "serverNames": ["www.yahoo.com"],
+          "fingerprint": "chrome",
+          "privateKey": "sIy8r71ljRR9Tv2OYodWIQXqCg2qpaJ7fsKGusDzTlY", 
+          "shortIds": ["c15fb82abe369250"] 
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls", "quic"]
+      }
+    }    
+  ],
+  
+  "outbounds": [
+    {
+      "tag": "out-default",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "AsIs" 
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
