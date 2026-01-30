@@ -49,6 +49,6 @@ module.exports = {
   POST_URL_PREFIX_MAPPING_CATEGORY: {
     "VPS评测": "performance",
     "站长推荐": "recommendation",
-    "vps教程": "tutorials",
+    "VPS教程": "tutorials",
   },
   }
